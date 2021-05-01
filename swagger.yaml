@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "API de conversão de temperatura"
-  version: "1.0.0"
+  version: "1.0.1"
   title: "Conversão de temperatura"
   contact:
     email: "fabricio@veronez.dev"
@@ -48,7 +48,48 @@ paths:
               "
         "400":
           description: "Bad Input Parameter"
+  /Kelvin/{valor}/celsius:
+    get:
+      description: "Converte de Kelvin para Celsius"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "valor"
+        in: "path"
+        description: "Valor que será convertido"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "Resultado da conversão"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Temperatura"
+        "400":
+          description: "Bad Input Parameter"
 
+  /celsius/{valor}/Kelvin:
+    get:
+      description: "Converte de Celsius para Kelvin"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "valor"
+        in: "path"
+        description: "Valor que será convertido"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          description: "Resultado da conversão"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Temperatura
+              "
+        "400":
+          description: "Bad Input Parameter"
 definitions:
   Temperatura:
     type: "object"
